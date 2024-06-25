@@ -1,0 +1,7 @@
+POST http://localhost:3000/signup HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "sample",
+    "password": "Wed, 21 Oct 2015 18:27:50 GMT"
+}

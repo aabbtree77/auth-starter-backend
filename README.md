@@ -33,15 +33,15 @@ I use `bun:sqlite` instead of `better-sqlite3`, but the latter is still needed b
 
 If you plan on changing the database, pay attention to how they handle the time zones and TypeScript's Date.Now(). `src/utils/sessionhelper.ts` appends `Z` to enforce the UTC when extracting the session expiry from the session table. Without such care, storing and reading may not result in the same value, and with the use of Date.Now() one can easily get some weird bugs where everything works only for longer session expiration times. 
 
-In my case, I am 3 hours behind UTC, and could not see any problems when setting a session expiry to 5 hours at first. It turned out that the program had a bug as it would subtract 3 hours from `session.expiresAt` due to UTC not enforced, killing a session instantly for the TTL values smaller or equal to 3 hours. ChatGPT 4e had no clue about it, suggested monitoring everything.
+In my case, I am 3 hours ahead of the UTC, and could not see any problems when setting a session expiry to 5 hours, at first. It turned out that the program had a bug as it would subtract 3 hours from `session.expiresAt` due to UTC not enforced, killing a session instantly for the TTL values smaller or equal to 3 hours.
 
 # Security
 
-This is bare-bones minimal authentication, use it at your own risk. 
+This is a bare-bones minimal authentication, use it at your own risk. 
 
 Notice that there is no `.env` inside `.gitignore`. You may need to change that.
 
-I could not set any cookies at first, but ChatGPT 4e helped to solve the problem.
+I could not set any cookies at first, but ChatGPT 4o helped to solve the problem admirably.
 
 It involves using Hono CORS middleware with the frontend URL and `credentials: true`:
 
@@ -90,6 +90,20 @@ Notice that `httpOnly: true` works both locally and globally. It blocks any clie
 
 - One reason for SQLite is that it is just a file, not the whole server that needs a Docker container. However, SQLite has no date and uuid types, but I am not pedantic and advanced enough to worry about such matters.
 
-- I am still hesitating whether this is the way to build CRUD apps. It is tedious, fragile, low level. Express with the MongoDB Atlas service and Compass desktop app is probably easier, but they are all quite a hassle. On the other hand, everything is under control and almost no onboarding compared to CMSes like PocketBase or Payload.
+- It remains unclear if this is the way to build CRUD apps even if we neglect "nocode builders", WP, services, and CMS solutions like PocketBase or Payload.
 
-- A strong side of this stack is that it is developer-friendly, and its parts are replaceable. It is just TypeScript and the web.
+- A strong side of this particular stack is that it is developer-friendly, and its parts are replaceable.
+
+- It makes sense to keep the backend for DB and security. This is complex enough. Prerendering/littering it with the frontend elements for efficiency is a secondary thing.
+
+- The TypeScript (Ts) way vs vanilla JavaScript (Js), Express, and MongoDB? The answer becomes surprisingly simple now. According to the latest news, there are fewer than 10% of Js purists left among us.
+
+
+
+# References
+
+[The 2023 State of JavaScript survey](https://2023.stateofjs.com/en-US/usage/)
+
+[Complex Schema Design with Drizzle ORM. youtube, 2024](https://www.youtube.com/watch?v=vLze97zZKsU&t=2305s)
+
+[You should learn Drizzle, the TypeScript SQL ORM. Syntax podcast #721, 2024](https://syntax.fm/show/721/you-should-learn-drizzle-the-typescript-sql-orm)

@@ -1,3 +1,5 @@
+> "To do a dull thing with style is preferable to doing a dangerous thing without it." - Charles Bukowski, 1972
+
 # Introduction
 
 This is the backend part of a session-based user name and password authentication whose frontend is released in [this github repository](https://github.com/aabbtree77/auth-starter-frontend).
@@ -88,17 +90,13 @@ Notice that `httpOnly: true` works both locally and globally. It blocks any clie
 
 # Further Notes
 
-- One reason for SQLite is that it is just a file, not the whole server that needs a Docker container. However, SQLite has no date and uuid types, but I am not pedantic and advanced enough to worry about such matters.
+- One reason for SQLite is that it is just a file, not the whole server that needs a Docker container. However, SQLite has no date and uuid types and they say it is worse at "horizontal scaling" when compared to PostgreSQL. I am not pedantic and advanced enough to worry about such matters.
 
-- It remains unclear if this is the way to build CRUD apps even if we neglect "nocode builders", WP, services, and CMS solutions like PocketBase or Payload.
+- It makes sense to keep the backend for DB and security. This is complex enough. Prerendering/littering it with the frontend elements for efficiency or convenience is a secondary thing.
 
-- A strong side of this particular stack is that it is developer-friendly, and its parts are replaceable.
+- The TypeScript (Ts) way vs vanilla JavaScript (Js) and MERN? The answer becomes surprisingly simple now. According to the latest news, there are fewer than 10% of Js purists left among us.
 
-- It makes sense to keep the backend for DB and security. This is complex enough. Prerendering/littering it with the frontend elements for efficiency is a secondary thing.
-
-- The TypeScript (Ts) way vs vanilla JavaScript (Js), Express, and MongoDB? The answer becomes surprisingly simple now. According to the latest news, there are fewer than 10% of Js purists left among us.
-
-
+- A strong side of this particular stack is that it is developer-friendly and its parts are replaceable. It would not be a big issue to replace Bun with Node, Hono with Express, SQLite with PostgreSQL.
 
 # References
 

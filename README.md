@@ -92,11 +92,11 @@ Notice that `httpOnly: true` works both locally and globally. It blocks any clie
 
 - One reason for SQLite is that it is just a file, not the whole server that needs a Docker container. However, SQLite has no date and uuid types and they say it is worse at "horizontal scaling" when compared to PostgreSQL. I am not pedantic and advanced enough to worry about such matters.
 
-- It makes sense to keep the backend for DB and security. This is complex enough. Prerendering/littering it with the frontend elements for efficiency or convenience is a secondary thing.
+- It makes sense to keep the backend for the DB and security, mostly, as opposed to old MPAs or metaframeworks. The DB part is already complex enough.
 
-- The TypeScript (Ts) way vs vanilla JavaScript (Js) and MERN? The answer becomes surprisingly simple now. According to the latest news, there are fewer than 10% of Js purists left among us.
+- TypeScript all the way. According to [the latest news](https://2023.stateofjs.com/en-US/usage/), there are fewer than 10% of JavaScript purists left among us.
 
-- A strong side of this particular stack is that it is developer-friendly and its parts are replaceable. It would not be a big issue to replace Bun with Node, Hono with Express, SQLite with PostgreSQL.
+- A strong side of this particular stack is that it is developer-friendly and its parts are replaceable. It would not be a big issue to replace Bun with Node, Hono with Express, SQLite with PostgreSQL. It may require some time, but it would not involve rearchitecting everything, it would be a linear process.
 
 # References
 

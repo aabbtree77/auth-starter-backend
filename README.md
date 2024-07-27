@@ -1,4 +1,4 @@
-> "To do a dull thing with style is preferable to doing a dangerous thing without it." - Charles Bukowski, 1972
+> "Sad thoughts come to me when I look in a cupboard full of biochemistry books. I realise that the cupboard will last much longer than the contents of the books in it." - Bolesław Skarżyński (1901-1963)
 
 # Introduction
 

@@ -1,4 +1,6 @@
-> "Sad thoughts come to me when I look in a bookcase full of biochemistry books. I realise that the bookcase will last much longer than the contents of the books in it." - Bolesław Skarżyński (1901-1963)
+> "Sad thoughts come to me when I look in a bookcase full of biochemistry books. I realize that the bookcase will last much longer than the contents of the books in it." 
+>
+> — *Bolesław Skarżyński (1901-1963)*
 
 # Introduction
 

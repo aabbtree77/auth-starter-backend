@@ -35,7 +35,7 @@ Delete the tables with the browser GUI in Drizzle Studio. Use `bun run db:genera
 
 I use `bun:sqlite` instead of `better-sqlite3`, but the latter is still needed by drizzle-kit, so better-sqlite3 is in `package.json`, but not in the code. See [this issue](https://github.com/drizzle-team/drizzle-orm/issues/1520).
 
-If you plan on changing the database, pay attention to how they handle the time zones and TypeScript's Date.Now(). `src/utils/sessionhelper.ts` appends `Z` to enforce the UTC when extracting the session expiry from the session table. Without such care, storing and reading may not result in the same value, and with the use of Date.Now() one can easily get some weird bugs where everything works only for longer session expiration times. 
+If you plan on changing the database, pay attention at the time zones and TypeScript's Date.Now(). `src/utils/sessionhelper.ts` appends `Z` to enforce the UTC when extracting the session expiry from the session table. Without such care, storing and reading may not result in the same value, and with the use of Date.Now() one can easily get some weird bugs where everything works only for longer session expiration times. 
 
 In my case, I am 3 hours ahead of the UTC, and could not see any problems when setting a session expiry to 5 hours, at first. It turned out that the program had a bug as it would subtract 3 hours from `session.expiresAt` due to UTC not enforced, killing a session instantly for the TTL values smaller or equal to 3 hours.
 
@@ -92,13 +92,11 @@ Notice that `httpOnly: true` works both locally and globally. It blocks any clie
 
 # Further Notes
 
-- One reason for SQLite is that it is just a file, not the whole server that needs a Docker container. However, SQLite has no date and uuid types and they say it is worse at "horizontal scaling" when compared to PostgreSQL. I am not pedantic and advanced enough to worry about such matters.
+- SQLite has no date and uuid types and they say it is worse at "horizontal scaling" when compared to PostgreSQL. I am not pedantic and advanced enough to worry about such matters.
 
-- It makes sense to keep the backend for the DB and security, mostly, as opposed to old MPAs or metaframeworks. The DB part is already complex enough.
+- Bun is replacable with Node, Hono with Express, SQLite with PostgreSQL. Redo this with ChatGPT/DeepSeek file by file for your use case in a separate repo instead of building a generic caboodle.
 
-- TypeScript all the way. According to [the latest news](https://2023.stateofjs.com/en-US/usage/), there are fewer than 10% of JavaScript purists left among us.
-
-- A strong side of this particular stack is that it is developer-friendly and its parts are replaceable. It would not be a big issue to replace Bun with Node, Hono with Express, SQLite with PostgreSQL. It may require some time, but it would not involve rearchitecting everything, it would be a linear process.
+- Push this further or jump to something ready-made such as PocketBase or Better Auth?!
 
 # References
 

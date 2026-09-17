@@ -106,9 +106,7 @@ Notice that `httpOnly: true` works both locally and globally. It blocks any clie
 
 [You should learn Drizzle, the TypeScript SQL ORM. Syntax podcast #721, 2024](https://syntax.fm/show/721/you-should-learn-drizzle-the-typescript-sql-orm)
 
-# Update 2025: Some Food for Thought
-
-Bun/Deno aim to solve quite a few problems. To appreciate the scale of that, consider what Js roughly is even without web frameworks, frontend libs and ORMs:
+# Update 2026: Js/Ts Madness
 
 js, ts, [d.ts](https://www.reddit.com/r/typescript/comments/17vqe05/library_with_the_most_complex_typings/), jsx, tsx, mjs, mts, cjs, cts, map, [tsconfig.json](https://kettanaito.com/blog/one-thing-nobody-explained-to-you-about-typescript),
 
@@ -159,7 +157,7 @@ JSDoc, [Closure Compiler](https://github.com/google/closure-compiler/wiki/Annota
 
 [Proposal T39](https://tc39.es/proposal-type-annotations/), [Flow](https://flow.org/en/docs/types/) typed Js supersets, similar to Ts,
 
-nx node, turborepo — "monorepo management", incremental builds, caching,
+nx, turborepo, lerna — "monorepo tooling", workspaces atop of npm for incremental builds, caching,
 
 pkg, yao-pkg, nexe - package Node.js project into an executable,
 
